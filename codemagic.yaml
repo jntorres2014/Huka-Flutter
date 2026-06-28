@@ -7,18 +7,12 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
-      vars:
-        # Definí GEMINI_API_KEY en Codemagic (Environment variables) si querés
-        # probar el chat. Si no, queda vacío y el resto funciona igual.
-        GEMINI_API_KEY: ""
     scripts:
       - name: Flutter pub get
         script: flutter pub get
       - name: Build iOS (sin firmar)
         # flutter build genera el Podfile y corre pod install solo.
-        script: |
-          flutter build ios --release --no-codesign \
-            --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY
+        # Sin GEMINI_API_KEY el build compila igual; el chat no responderá.
+        script: flutter build ios --release --no-codesign
     artifacts:
       - build/ios/iphoneos/*.app
-      - flutter_drive.log
