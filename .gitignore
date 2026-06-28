@@ -44,11 +44,10 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# Firebase / claves (repo público: NO subir)
-lib/firebase_options.dart
-android/app/google-services.json
-ios/Runner/GoogleService-Info.plist
-ios/firebase_app_id_file.json
+# Secretos REALES que no van al repo (keystores de firma, .env).
+# Nota: firebase_options.dart y google-services.json NO son secretos
+# (son identificadores del proyecto; la seguridad la dan las Reglas de Firebase),
+# por eso SÍ se suben — Codemagic los necesita para compilar.
 *.keystore
 *.jks
 key.properties

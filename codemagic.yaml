@@ -1,0 +1,24 @@
+workflows:
+  ios-test-build:
+    name: Huka iOS (build de prueba, sin firmar)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      vars:
+        # Definí GEMINI_API_KEY en Codemagic (Environment variables) si querés
+        # probar el chat. Si no, queda vacío y el resto funciona igual.
+        GEMINI_API_KEY: ""
+    scripts:
+      - name: Flutter pub get
+        script: flutter pub get
+      - name: Build iOS (sin firmar)
+        # flutter build genera el Podfile y corre pod install solo.
+        script: |
+          flutter build ios --release --no-codesign \
+            --dart-define=GEMINI_API_KEY=$GEMINI_API_KEY
+    artifacts:
+      - build/ios/iphoneos/*.app
+      - flutter_drive.log

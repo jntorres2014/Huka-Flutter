@@ -66,5 +66,30 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+
+	<!-- Permisos (iOS) -->
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Huka usa tu ubicación para registrar dónde pescaste.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Huka usa la cámara para identificar peces y sacar fotos de tus capturas.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Huka accede a tus fotos para identificar peces.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Huka usa el micrófono para que le hables al asistente.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Huka transcribe tu voz para responder consultas de pesca.</string>
+
+	<!-- Esquema de URL para el login con Google (REVERSED_CLIENT_ID) -->
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.976766461144-fpacsm925nlvc26ht9bdh6dfll0casck</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
