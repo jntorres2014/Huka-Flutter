@@ -1,0 +1,114 @@
+name: juka_flutter
+description: "Huka - Tu compañero de pesca inteligente. Migración a Flutter (Android + iOS)."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # --- Estado y navegación ---
+  flutter_riverpod: ^2.5.1
+  go_router: ^14.2.0
+
+  # --- Firebase (lo que usa el código hoy) ---
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
+
+  # --- Login ---
+  google_sign_in: ^6.2.1
+  # sign_in_with_apple: se reactiva en la fase iOS (solo aplica a iOS y rompía
+  # el build de Android por incompatibilidad de JVM target).
+
+  # --- IA Gemini (chat + identificar) ---
+  google_generative_ai: ^0.4.6
+
+  # --- Identificar pez ---
+  tflite_flutter: ^0.12.0   # 0.10.x no compila con Dart 3 (UnmodifiableUint8ListView)
+  image: ^4.2.0
+  image_picker: ^1.1.2
+
+  # --- Ubicación y mapa (Crear parte) ---
+  geolocator: ^13.0.1
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+
+  # --- Imágenes remotas (fotos de la Pescadex) ---
+  cached_network_image: ^3.4.1
+
+  # --- Voz y lectura en el Chat ---
+  speech_to_text: ^7.0.0
+  flutter_tts: ^4.0.2
+
+  # --- Utilidades en uso ---
+  shared_preferences: ^2.3.2
+  url_launcher: ^6.3.0
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  flutter_launcher_icons: ^0.14.1   # genera los íconos de la app
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/models/        # acá va modelo_nuevo.tflite
+
+# Ícono de la app (logo Huka). Generar con:  dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/huka_icon.png"
+  min_sdk_android: 24
+  remove_alpha_ios: true
+  # Ícono adaptativo de Android (fondo azul de marca + logo blanco centrado).
+  adaptive_icon_background: "#00A0DE"
+  adaptive_icon_foreground: "assets/icon/huka_icon_fg.png"
+
+# ───────────────────────────────────────────────────────────────────────────
+# DEPENDENCIAS PARA FASES PENDIENTES (descomentar al implementar cada una).
+# Se quitaron del set activo porque el código todavía no las usa y algunas
+# (ML Kit) generaban conflictos de versiones en `flutter pub get`.
+#
+#   # Firebase extra (storage, notificaciones, analytics)
+#   firebase_storage: ^12.3.4
+#   firebase_messaging: ^15.1.3
+#   firebase_analytics: ^11.3.3
+#
+#   # Mapas y ubicación (GPS en Crear parte)
+#   flutter_map: ^7.0.2
+#   latlong2: ^0.9.1
+#   geolocator: ^13.0.1
+#
+#   # Voz y TTS (chat por voz)
+#   speech_to_text: ^7.0.0
+#   flutter_tts: ^4.0.2
+#
+#   # ML Kit (análisis de relatos) — usar versiones COMPATIBLES entre sí
+#   google_mlkit_text_recognition: ^0.13.0
+#   google_mlkit_language_id: ^0.11.0
+#   google_mlkit_translation: ^0.11.1
+#   google_mlkit_smart_reply: ^0.12.0
+#   google_mlkit_entity_extraction: ^0.13.0
+#
+#   # Base local (Room -> drift) y sync offline (WorkManager)
+#   drift: ^2.20.0
+#   sqlite3_flutter_libs: ^0.5.24
+#   path_provider: ^2.1.4
+#   path: ^1.9.0
+#   workmanager: ^0.5.2
+#   connectivity_plus: ^6.0.5
+#
+#   # Red e imágenes remotas
+#   dio: ^5.7.0
+#   cached_network_image: ^3.4.1
+#   permission_handler: ^11.3.1
+# ───────────────────────────────────────────────────────────────────────────

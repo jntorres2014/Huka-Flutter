@@ -1,0 +1,104 @@
+
+{
+  "nodes": {
+    "main_menu": {
+      "id": "main_menu",
+      "message": "¡Hola pescador! 🎣 ¿En qué puedo ayudarte hoy?",
+      "type": "MENU",
+      "options": [
+        {
+          "label": " Consultar a Huka",
+          "icon": "💬",
+          "action": "ENABLE_CHAT",
+          "data": {
+            "chat_type": "general_assistant"
+          }
+        },
+        {
+          "label": " Información de Mareas",
+          "icon": "🌊",
+          "action": "EXTERNAL_LINK",
+          "data": {
+            "url": "https://www.hidro.gov.ar/oceanografia/tmareas/form_tmareas.asp"
+          }
+        },
+        {
+          "label": " Informacion adicional",
+          "icon": "🐟",
+          "action": "NAVIGATE",
+          "target": "species_menu"
+        }
+
+      ]
+    },
+    "tides_menu": {
+      "id": "tides_menu",
+      "message": "📊 Información de mareas disponible:",
+      "type": "MENU",
+      "options": [
+        {
+          "label": "📅 Tabla de Mareas Mensual",
+          "action": "DOWNLOAD",
+          "data": {
+            "type": "tide_table",
+            "format": "pdf"
+          }
+        },
+        {
+          "label": "🌊 Marea Actual",
+          "action": "NAVIGATE",
+          "target": "current_tide"
+        },
+        {
+          "label": "📍 Mareas por Zona",
+          "action": "SHOW_MAP",
+          "data": {
+            "layer": "tides"
+          }
+        }
+      ]
+    },
+    "species_menu": {
+      "id": "species_menu",
+      "message": "🐟 ¿Qué información necesitas sobre especies?",
+      "type": "MENU",
+      "options": [
+        {
+          "label": "📖 Guía de Especies",
+          "action": "EXTERNAL_LINK",
+          "data": {
+            "url": "https://www.pescaargentina.com.ar/contenidos/especies-argentinas"
+          }
+        },
+        {
+          "label": "💨 Viento",
+          "action": "EXTERNAL_LINK",
+          "data": {
+          "url": "https://www.windguru.cz/53"
+            }
+        },
+        {
+          "label": "🚫 Vedas Vigentes",
+          "action": "EXTERNAL_LINK",
+          "data": {
+            "url" : "https://www.argentina.gob.ar/inidep/areas-de-veda"
+          }
+        },
+        {
+          "label": "📋 Permisos y reglamentos",
+          "action": "EXTERNAL_LINK",
+          "data": {
+            "url": "https://www.pescaargentina.com.ar/reglamento-licencia-pesca-deportiva"
+          }
+        },
+        {
+          "label": "🌙 Calendario lunar",
+          "action": "EXTERNAL_LINK",
+          "data": {
+            "url": "https://www.pescaargentina.com.ar/fases-lunares/"
+          }
+        }
+      ]
+    }
+  }
+}
